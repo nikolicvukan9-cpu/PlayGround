@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#18251f" />
+  <title>COUNTRYLINE — Open Road</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main id="game-shell">
+    <canvas id="scene" aria-label="3D country road driving game"></canvas>
+    <div class="vignette"></div>
+    <div class="topbar">
+      <a class="wordmark" href="#" aria-label="Countryline home"><span class="mark">C</span><span>COUNTRY<span class="word-light">LINE</span></span></a>
+      <div class="top-center"><span class="live-dot"></span><span id="weather-label">CLEAR SKIES</span><i></i><span>OPEN WORLD</span></div>
+      <button class="icon-btn" id="settings-button" aria-label="Open settings"><span class="sliders">☷</span></button>
+    </div>
+    <div class="hud" id="hud">
+      <div class="speed-card"><div class="speed-row"><span class="speed-number" id="speed">000</span><span class="speed-unit">KM/H</span></div><div class="speed-rule"><span id="speed-meter"></span></div><div class="gear-row"><span id="gear">P</span><span id="drive-label">PARKED</span></div></div>
+      <div class="location-card"><div class="location-icon">⌖</div><div><div class="eyebrow">YOU ARE EXPLORING</div><div class="location-name" id="location-name">PINE RIDGE</div><div class="location-sub">NORTH VALLEY · 09:41 AM</div></div></div>
+      <div class="minimap"><div class="map-grid"></div><svg viewBox="0 0 120 120" aria-hidden="true"><path class="map-road" d="M-5 80 C20 74 28 105 53 89 S70 54 88 60 S99 37 127 26"/><path class="map-road-secondary" d="M13 -5 C28 25 48 32 46 58 S59 90 81 126"/><circle cx="59" cy="66" r="4" class="map-player"/></svg><span class="map-north">N</span></div>
+    </div>
+    <div class="controls-hint" id="controls-hint"><span class="key">W</span><span class="key-stack"><i class="key">A</i><i class="key">S</i><i class="key">D</i></span><span class="hint-copy">DRIVE</span><span class="hint-divider"></span><span class="key">SPACE</span><span class="hint-copy">HANDBRAKE</span></div>
+    <div class="touch-controls" id="touch-controls"><button data-control="left">◀</button><div><button data-control="up">▲</button><button data-control="down">▼</button></div><button data-control="right">▶</button></div>
+    <div class="toast" id="toast"></div>
+
+    <section class="garage-screen" id="garage-screen">
+      <div class="garage-panel">
+        <div class="garage-left">
+          <div class="eyebrow warm">YOUR COLLECTION <span class="eyebrow-line"></span></div>
+          <h1>THE<br><em>OPEN ROAD.</em></h1>
+          <p class="intro">Take the long way home.<br>Find your pace in the valley.</p>
+          <div class="car-info"><div class="car-index"><span id="car-index">01</span><small> / 04</small></div><div class="car-name" id="car-name">FIELD COUPE</div><div class="car-description" id="car-description">A little grit. A lot of character.</div></div>
+          <div class="car-picker" id="car-picker"></div>
+          <button class="drive-button" id="drive-button"><span>START DRIVING</span><b>↗</b></button>
+          <div class="garage-foot"><span>NO RUSH. NO ROUTE. JUST YOU.</span><span>V 1.0.4</span></div>
+        </div>
+        <div class="garage-right">
+          <div class="garage-right-top"><span class="eyebrow">PINE RIDGE MOTOR CLUB</span><span class="garage-status"><i></i> VEHICLE READY</span></div>
+          <div class="car-shadow"></div>
+          <div class="garage-note"><span class="note-line"></span><span>BUILT FOR THE BACKROADS</span></div>
+          <div class="garage-bottom"><span>01 — 04</span><span class="swatches" id="swatches"></span><span>← &nbsp; SELECT VEHICLE &nbsp; →</span></div>
+        </div>
+      </div>
+      <div class="garage-footer"><span>© COUNTRYLINE MOTOR CLUB</span><span>DESIGNED FOR THE DRIVE, NOT THE DESTINATION</span></div>
+    </section>
+
+    <section class="settings-modal" id="settings-modal" aria-hidden="true">
+      <div class="settings-card"><button class="close-button" id="close-settings" aria-label="Close settings">×</button><div class="eyebrow warm">MAKE IT YOURS</div><h2>DRIVING<br><em>SETTINGS</em></h2>
+        <div class="setting-row"><div><strong>Graphics quality</strong><small>Higher detail may affect performance</small></div><select id="quality-select"><option value="low">Low</option><option value="medium">Medium</option><option value="high" selected>High</option><option value="ultra">Ultra</option></select></div>
+        <div class="setting-row"><div><strong>Sound</strong><small>Ambient road and engine sounds</small></div><button class="toggle on" id="sound-toggle" aria-pressed="true"><span></span></button></div>
+        <div class="settings-note">A quiet valley. A good car. No rush.</div>
+      </div>
+    </section>
+    <div class="pause-chip" id="pause-chip"><span>Ⅱ</span> PAUSED <button id="resume-button">RESUME</button></div>
+  </main>
+  <script type="module" src="game.js"></script>
+</body>
+</html>
